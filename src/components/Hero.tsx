@@ -62,7 +62,7 @@ export function Hero() {
                 </a>
               </Button>
               <Button size="lg" variant="outline" className="rounded-full w-full sm:w-auto h-14 px-8 text-lg border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all" asChild>
-                <a href="/resume.pdf" target="_blank">
+                <a href="https://drive.google.com/file/d/1UaZ4g3-FjuwQOv33S2w6qWGoX_LQilgC/view?usp=sharing" target="_blank">
                   <Download className="mr-2 h-5 w-5" /> Download Resume
                 </a>
               </Button>

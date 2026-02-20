@@ -5,17 +5,55 @@ import { GraduationCap, Code2, Database, Layout } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-import { SiPhp, SiLaravel, SiNextdotjs, SiTailwindcss, SiBootstrap, SiHtml5, SiCss3, SiJavascript } from "react-icons/si";
-
 const skills = [
-  { name: "PHP", icon: SiPhp, color: "text-[#777BB4]" },
-  { name: "Laravel", icon: SiLaravel, color: "text-[#FF2D20]" },
-  { name: "Next.js", icon: SiNextdotjs, color: "text-black dark:text-white" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-[#06B6D4]" },
-  { name: "Bootstrap", icon: SiBootstrap, color: "text-[#7952B3]" },
-  { name: "HTML", icon: SiHtml5, color: "text-[#E34F26]" },
-  { name: "CSS", icon: SiCss3, color: "text-[#1572B6]" },
-  { name: "JavaScript", icon: SiJavascript, color: "text-[#F7DF1E]" }
+  { 
+    name: "PHP", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg", 
+    color: "text-[#777BB4]", 
+    bg: "group-hover:bg-[#777BB4]/10 dark:group-hover:bg-[#777BB4]/20", 
+    border: "group-hover:border-[#777BB4]/50" 
+  },
+  { 
+    name: "Laravel", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg", 
+    color: "text-[#FF2D20]", 
+    bg: "group-hover:bg-[#FF2D20]/10 dark:group-hover:bg-[#FF2D20]/20", 
+    border: "group-hover:border-[#FF2D20]/50" 
+  },
+  { 
+    name: "Next.js", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg", 
+    color: "text-black dark:text-white", 
+    bg: "group-hover:bg-black/5 dark:group-hover:bg-white/10", 
+    border: "group-hover:border-black/20 dark:group-hover:border-white/20" 
+  },
+  { 
+    name: "Tailwind", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg", 
+    color: "text-[#06B6D4]", 
+    bg: "group-hover:bg-[#06B6D4]/10 dark:group-hover:bg-[#06B6D4]/20", 
+    border: "group-hover:border-[#06B6D4]/50" 
+  },
+  { 
+    name: "Bootstrap", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg", 
+    color: "text-[#7952B3]", 
+    bg: "group-hover:bg-[#7952B3]/10 dark:group-hover:bg-[#7952B3]/20", 
+    border: "group-hover:border-[#7952B3]/50" 
+  },
+  { 
+    name: "HTML", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg", 
+    color: "text-[#E34F26]", 
+    bg: "group-hover:bg-[#E34F26]/10 dark:group-hover:bg-[#E34F26]/20", 
+    border: "group-hover:border-[#E34F26]/50" 
+  },
+  { 
+    name: "CSS", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg", 
+    color: "text-[#1572B6]", 
+    bg: "group-hover:bg-[#1572B6]/10 dark:group-hover:bg-[#1572B6]/20", 
+    border: "group-hover:border-[#1572B6]/50" 
+  },
+  { 
+    name: "JavaScript", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg", 
+    color: "text-[#F7DF1E]", 
+    bg: "group-hover:bg-[#F7DF1E]/10 dark:group-hover:bg-[#F7DF1E]/20", 
+    border: "group-hover:border-[#F7DF1E]/50" 
+  }
 ];
 
 const containerVariants = {
@@ -94,11 +132,14 @@ export function About() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.1, duration: 0.4 }}
                         viewport={{ once: true }}
-                        className="group relative flex flex-col items-center justify-center p-4 bg-white/50 dark:bg-zinc-900/50 border border-zinc-200/50 dark:border-zinc-800/50 rounded-2xl hover:bg-white dark:hover:bg-zinc-800 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                        className={`group relative flex flex-col items-center justify-center p-4 bg-white/50 dark:bg-zinc-900/50 border border-zinc-200/50 dark:border-zinc-800/50 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 \${skill.bg} \${skill.border}`}
                       >
-                         <div className={`absolute inset-0 bg-gradient-to-br from-white/40 to-white/0 dark:from-white/5 dark:to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none \${skill.color.replace('text-', 'from-')}`} />
-                         <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-900 shadow-inner mb-3 group-hover:scale-110 transition-transform duration-300">
-                           <skill.icon className={`w-6 h-6 \${skill.color}`} />
+                         <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-800/50 shadow-inner mb-3 group-hover:scale-110 group-hover:bg-white dark:group-hover:bg-zinc-800 transition-all duration-300">
+                           <img 
+                             src={skill.image} 
+                             alt={skill.name} 
+                             className={`w-6 h-6 object-contain \${skill.name === 'Next.js' ? 'dark:invert' : ''}`} 
+                           />
                          </span>
                          <span className="relative z-10 text-xs font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-zinc-50 transition-colors">
                            {skill.name}
