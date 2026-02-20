@@ -36,14 +36,14 @@ const projects = [
 
 const tagColors: Record<string, string> = {
   "Next.js": "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 border-transparent",
-  "Tailwind CSS": "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400 border-cyan-200 dark:border-cyan-800",
-  "JavaScript": "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400 border-yellow-200 dark:border-yellow-800",
-  "Laravel": "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 border-red-200 dark:border-red-800",
-  "PHP": "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800",
-  "Bootstrap": "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 border-purple-200 dark:border-purple-800",
-  "MySQL": "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 border-blue-200 dark:border-blue-800",
-  "HTML": "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 border-orange-200 dark:border-orange-800",
-  "CSS": "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 border-blue-200 dark:border-blue-800"
+  "Tailwind CSS": "bg-cyan-100 text-cyan-700 dark:bg-cyan-500/20 dark:text-cyan-300 dark:border-cyan-500/30 border-cyan-200",
+  "JavaScript": "bg-yellow-100 text-yellow-700 dark:bg-yellow-500/20 dark:text-yellow-300 dark:border-yellow-500/30 border-yellow-200",
+  "Laravel": "bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-300 dark:border-red-500/30 border-red-200",
+  "PHP": "bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-300 dark:border-indigo-500/30 border-indigo-200",
+  "Bootstrap": "bg-purple-100 text-purple-700 dark:bg-purple-500/20 dark:text-purple-300 dark:border-purple-500/30 border-purple-200",
+  "MySQL": "bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-300 dark:border-blue-500/30 border-blue-200",
+  "HTML": "bg-orange-100 text-orange-700 dark:bg-orange-500/20 dark:text-orange-300 dark:border-orange-500/30 border-orange-200",
+  "CSS": "bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-300 dark:border-blue-500/30 border-blue-200"
 };
 
 const containerVariants = {

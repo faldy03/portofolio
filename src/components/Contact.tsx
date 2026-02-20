@@ -38,13 +38,13 @@ export function Contact() {
                   </div>
                   
                   <div className="space-y-6">
-                    <a href="mailto:hello@example.com" className="flex items-center gap-4 group">
+                    <a href="mailto:m.fauzan.faldy17@gmail.com" className="flex items-center gap-4 group">
                       <div className="h-12 w-12 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors shadow-sm">
                         <Mail className="h-5 w-5" />
                       </div>
                       <div>
                         <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">Email Me</p>
-                        <p className="text-zinc-900 dark:text-zinc-100 font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">hello@example.com</p>
+                        <p className="text-zinc-900 dark:text-zinc-100 font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">m.fauzan.faldy17@gmail.com</p>
                       </div>
                     </a>
 
@@ -54,7 +54,7 @@ export function Contact() {
                       </div>
                       <div>
                         <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">Location</p>
-                        <p className="text-zinc-900 dark:text-zinc-100 font-semibold">Purwokerto, Indonesia</p>
+                        <p className="text-zinc-900 dark:text-zinc-100 font-semibold">Bekasi, Indonesia</p>
                       </div>
                     </div>
                   </div>
@@ -64,16 +64,22 @@ export function Contact() {
 
             <motion.div 
               className="md:col-span-3"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.1 }
+                }
+              }}
             >
               <Card className="border-none shadow-lg bg-white dark:bg-zinc-950">
                 <CardContent className="p-8">
                   <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                     <div className="grid sm:grid-cols-2 gap-6">
-                      <div className="space-y-2">
+                      <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="space-y-2">
                         <label htmlFor="name" className="text-sm font-medium text-zinc-900 dark:text-zinc-200">Name</label>
                         <input 
                           type="text" 
@@ -81,8 +87,8 @@ export function Contact() {
                           className="w-full flex h-12 rounded-md border border-zinc-200 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300"
                           placeholder="John Doe"
                         />
-                      </div>
-                      <div className="space-y-2">
+                      </motion.div>
+                      <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="space-y-2">
                         <label htmlFor="email" className="text-sm font-medium text-zinc-900 dark:text-zinc-200">Email</label>
                         <input 
                           type="email" 
@@ -90,9 +96,9 @@ export function Contact() {
                           className="w-full flex h-12 rounded-md border border-zinc-200 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300"
                           placeholder="john@example.com"
                         />
-                      </div>
+                      </motion.div>
                     </div>
-                    <div className="space-y-2">
+                    <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="space-y-2">
                       <label htmlFor="subject" className="text-sm font-medium text-zinc-900 dark:text-zinc-200">Subject</label>
                       <input 
                         type="text" 
@@ -100,8 +106,8 @@ export function Contact() {
                         className="w-full flex h-12 rounded-md border border-zinc-200 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300"
                         placeholder="How can I help you?"
                       />
-                    </div>
-                    <div className="space-y-2">
+                    </motion.div>
+                    <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="space-y-2">
                       <label htmlFor="message" className="text-sm font-medium text-zinc-900 dark:text-zinc-200">Message</label>
                       <textarea 
                         id="message" 
@@ -109,10 +115,12 @@ export function Contact() {
                         className="w-full flex rounded-md border border-zinc-200 bg-transparent px-3 py-2 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300 resize-none"
                         placeholder="Your message here..."
                       ></textarea>
-                    </div>
-                    <Button size="lg" className="w-full sm:w-auto h-12 px-8 rounded-full shadow-md gap-2">
-                      Send Message <Send className="h-4 w-4" />
-                    </Button>
+                    </motion.div>
+                    <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}>
+                      <Button size="lg" className="w-full sm:w-auto h-12 px-8 rounded-full shadow-md gap-2">
+                        Send Message <Send className="h-4 w-4" />
+                      </Button>
+                    </motion.div>
                   </form>
                 </CardContent>
               </Card>

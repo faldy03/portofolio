@@ -13,7 +13,7 @@ export function Footer() {
             </span>
             . The source code is available on{" "}
             <a
-              href="https://github.com/fauzannaufaldy/portofolio" 
+              href="https://github.com/faldy03/portofolio" 
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
@@ -24,15 +24,15 @@ export function Footer() {
           </p>
         </div>
         <div className="flex items-center space-x-4">
-          <Link href="https://github.com/fauzannaufaldy" target="_blank" className="text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="https://github.com/faldy03" target="_blank" className="text-muted-foreground hover:text-foreground transition-colors">
             <Github className="h-5 w-5" />
             <span className="sr-only">GitHub</span>
           </Link>
-          <Link href="https://linkedin.com/in/muhammadfauzannaufaldy" target="_blank" className="text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="https://www.linkedin.com/in/muhammad-fauzan-naufaldy-ba1308295/" target="_blank" className="text-muted-foreground hover:text-foreground transition-colors">
             <Linkedin className="h-5 w-5" />
             <span className="sr-only">LinkedIn</span>
           </Link>
-          <Link href="mailto:contact@example.com" className="text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="mailto:m.fauzan.faldy17@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
             <Mail className="h-5 w-5" />
             <span className="sr-only">Email</span>
           </Link>
