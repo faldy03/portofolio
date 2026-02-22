@@ -6,6 +6,23 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function Contact() {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const subject = formData.get("subject") as string;
+    const message = formData.get("message") as string;
+
+    const mailtoLink = `mailto:m.fauzan.faldy17@gmail.com?subject=${encodeURIComponent(
+      subject || "New message from Portfolio"
+    )}&body=${encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    )}`;
+    
+    window.location.href = mailtoLink;
+  };
+
   return (
     <section id="contact" className="py-20 md:py-32 bg-zinc-50 dark:bg-zinc-900/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,13 +94,14 @@ export function Contact() {
             >
               <Card className="border-none shadow-lg bg-white dark:bg-zinc-950">
                 <CardContent className="p-8">
-                  <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                  <form className="space-y-6" onSubmit={handleSubmit}>
                     <div className="grid sm:grid-cols-2 gap-6">
                       <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="space-y-2">
                         <label htmlFor="name" className="text-sm font-medium text-zinc-900 dark:text-zinc-200">Name</label>
                         <input 
                           type="text" 
                           id="name" 
+                          name="name"
                           className="w-full flex h-12 rounded-md border border-zinc-200 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300"
                           placeholder="John Doe"
                         />
@@ -93,6 +111,7 @@ export function Contact() {
                         <input 
                           type="email" 
                           id="email" 
+                          name="email"
                           className="w-full flex h-12 rounded-md border border-zinc-200 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300"
                           placeholder="john@example.com"
                         />
@@ -103,6 +122,7 @@ export function Contact() {
                       <input 
                         type="text" 
                         id="subject" 
+                        name="subject"
                         className="w-full flex h-12 rounded-md border border-zinc-200 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300"
                         placeholder="How can I help you?"
                       />
@@ -111,13 +131,14 @@ export function Contact() {
                       <label htmlFor="message" className="text-sm font-medium text-zinc-900 dark:text-zinc-200">Message</label>
                       <textarea 
                         id="message" 
+                        name="message"
                         rows={5}
                         className="w-full flex rounded-md border border-zinc-200 bg-transparent px-3 py-2 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300 resize-none"
                         placeholder="Your message here..."
                       ></textarea>
                     </motion.div>
                     <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}>
-                      <Button size="lg" className="w-full sm:w-auto h-12 px-8 rounded-full shadow-md gap-2">
+                      <Button type="submit" size="lg" className="w-full sm:w-auto h-12 px-8 rounded-full shadow-md gap-2">
                         Send Message <Send className="h-4 w-4" />
                       </Button>
                     </motion.div>

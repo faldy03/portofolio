@@ -8,29 +8,29 @@ import { Badge } from "@/components/ui/badge";
 const experiences = [
   {
     id: 1,
-    role: "Freelance Web Developer",
-    company: "Self-Employed",
-    date: "2023 - Present",
-    description: "Developed and maintained full-stack web applications for various clients using modern technologies like React, Next.js, and Laravel. Focused on delivering responsive and user-friendly interfaces.",
-    skills: ["Next.js", "React", "Tailwind CSS", "Laravel"],
+    role: "Full Stack Web Developer",
+    company: "CodeTag Studio",
+    date: " Jul 2025",
+    description: "Together with my teammate, I built CodeTag, a platform that helps people create websites for various purposes such as business needs, company profiles, and more.",
+    skills: ["Next.js", "React", "Tailwind CSS", "Node.js"],
     accent: "bg-blue-500"
   },
   {
     id: 2,
-    role: "Software Engineer Intern",
-    company: "Tech Company",
-    date: "Summer 2023",
-    description: "Collaborated with the backend team to design and implement RESTful APIs using PHP and Laravel. Participated in daily stand-ups and code reviews to ensure code quality.",
-    skills: ["PHP", "Laravel", "MySQL", "REST API"],
+    role: "Indepedent Study",
+    company: "Dicoding Indonesia",
+    date: "Apr 2023",
+    description: "Studied and practiced Front-End and Back-End web development, focusing on building responsive interfaces and developing robust server-side applications. Gained experience with modern web technologies and frameworks while enhancing problem-solving and coding skills.",
+    skills: ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Bootstrap"],
     accent: "bg-emerald-500"
   },
   {
     id: 3,
-    role: "Frontend Developer (Project)",
+    role: "Full Stack Web Developer",
     company: "Telkom University",
-    date: "2022 - 2023",
-    description: "Led the frontend development for a major university project. Created interactive dashboards and data visualization components.",
-    skills: ["JavaScript", "HTML/CSS", "Bootstrap", "Chart.js"],
+    date: "Jan 2025 - Aug 2025",
+    description: "Web-based Laboratory Room and Equipment Borrowing Management System developed to streamline reservation and inventory tracking at the Informatics Laboratory of Universitas Telkom Purwokerto. The system provides features for booking lab rooms, borrowing equipment, admin verification, and monitoring borrowing history using Laravel, MySQL, and Tailwind CSS.",
+    skills: ["PHP", "Laravel", "MySQL", "Tailwind CSS"],
     accent: "bg-purple-500"
   }
 ];
@@ -81,7 +81,7 @@ export function Experience() {
             {experiences.map((exp, index) => {
               const isEven = index % 2 === 0;
               return (
-                <motion.div 
+                <motion.div
                   key={exp.id}
                   variants={itemVariants}
                   className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
@@ -96,7 +96,7 @@ export function Experience() {
                     <CardContent className="p-6 relative overflow-hidden">
                       {/* Accent Line */}
                       <div className={`absolute top-0 \${isEven ? 'left-0' : 'left-0 md:left-auto md:right-0'} w-1 h-full \${exp.accent} transition-all duration-300 group-hover:w-2`} />
-                      
+
                       <div className="space-y-4">
                         <div className="flex flex-col xl:flex-row xl:items-start justify-between gap-2">
                           <div>
@@ -113,11 +113,11 @@ export function Experience() {
                             {exp.date}
                           </Badge>
                         </div>
-                        
+
                         <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
                           {exp.description}
                         </p>
-                        
+
                         <div className="flex flex-wrap gap-2 pt-2">
                           {exp.skills.map(skill => (
                             <Badge key={skill} variant="outline" className="bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 group-hover:border-zinc-300 dark:group-hover:border-zinc-700 transition-colors">

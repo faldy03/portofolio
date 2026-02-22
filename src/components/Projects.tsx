@@ -17,26 +17,26 @@ import {
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "A full-featured online store built with Next.js, featuring a modern UI, responsive design, and seamless shopping experience. Styled exclusively with Tailwind CSS.",
-    image: "/api/placeholder/600/400", 
-    tags: ["Next.js", "Tailwind CSS", "JavaScript"],
+    title: "CodeTag Studio",
+    description: "A modern web development studio platform that helps businesses and individuals create stunning websites.",
+    image: "/asset/codetag.png",
+    tags: ["Next.js", "Tailwind CSS", "React", "TypeScript", "Node.js", "Vercel"],
     github: "https://github.com/fauzannaufaldy/ecommerce-next",
-    demo: "#"
+    demo: "https://codetag-ten.vercel.app/"
   },
   {
-    title: "Inventory Management System",
-    description: "Robust backend system built with Laravel and PHP to track product inventory, manage suppliers, and generate reports. Includes an intuitive dashboard.",
-    image: "/api/placeholder/600/400",
-    tags: ["Laravel", "PHP", "Bootstrap", "MySQL"],
+    title: "Management of Room and IT Laboratory Equipment Rental",
+    description: "Web-based Laboratory Room and Equipment Borrowing Management System developed to streamline reservation and inventory tracking at the Informatics Laboratory of Universitas Telkom Purwokerto. The system provides features for booking lab rooms, borrowing equipment, admin verification, and monitoring borrowing history using Laravel, MySQL, and Tailwind CSS.",
+    image: "/asset/lab.png",
+    tags: ["Laravel", "PHP", "Tailwind CSS", "MySQL"],
     github: "https://github.com/fauzannaufaldy/inventory-laravel",
-    demo: "#"
+    demo: "https://www.laboratoriumfif.site/"
   },
   {
-    title: "Interactive Dashboard",
-    description: "Data visualization dashboard with HTML, CSS, and Vanilla JavaScript, showcasing complex data in an easy-to-understand and interactive format format.",
-    image: "/api/placeholder/600/400",
-    tags: ["HTML", "CSS", "JavaScript"],
+    title: "DreamSync",
+    description: "DreamSync is a sleep tracking and wellness web application designed to help users improve sleep quality, manage daily activities, and reduce insomnia through sleep tips, relaxation features, and smart reminders with a modern and responsive user interface.",
+    image: "/asset/dreamsync.png",
+    tags: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     github: "https://github.com/fauzannaufaldy/interactive-dashboard",
     demo: "#"
   }
@@ -72,7 +72,7 @@ export function Projects() {
     <section id="projects" className="py-20 md:py-32 bg-zinc-50/50 dark:bg-zinc-900/20 relative overflow-hidden">
       {/* modern background blur */}
       <div className="absolute top-0 right-0 -z-10 translate-x-1/3 -translate-y-1/3 w-[600px] h-[600px] opacity-20 dark:opacity-10 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-bl from-blue-400 to-purple-500 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s' }}/>
+        <div className="absolute inset-0 bg-gradient-to-bl from-blue-400 to-purple-500 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,7 +86,7 @@ export function Projects() {
           </p>
         </div>
 
-        <motion.div 
+        <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
@@ -98,37 +98,47 @@ export function Projects() {
               <DialogTrigger asChild>
                 <motion.div variants={itemVariants} className="group h-full flex cursor-pointer w-full text-left">
                   <Card className="flex flex-col w-full overflow-hidden border-zinc-200/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/60 backdrop-blur-xl transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 relative border origin-bottom">
-                    
+
                     {/* Image Placeholder area */}
-                    <div className="relative aspect-[16/9] overflow-hidden bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200/50 dark:border-zinc-800/50 p-6 flex flex-col justify-end">
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 z-10" />
-                        
-                        {/* Abstract colorful background for placeholder */}
-                        <div className={`absolute inset-0 opacity-20 dark:opacity-30 mix-blend-overlay \${
-                          index % 3 === 0 ? 'bg-gradient-to-br from-blue-500 to-purple-600' : 
-                          index % 3 === 1 ? 'bg-gradient-to-br from-emerald-500 to-teal-600' : 
-                          'bg-gradient-to-br from-orange-500 to-pink-600'
-                        }`} />
-                        
-                        <div className="relative z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                             <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                             <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                                 <span className="text-xs font-medium text-blue-300 uppercase tracking-wider">Click to view details</span>
-                             </div>
+                    {/* Project Image */}
+                    <div className="relative aspect-[16/9] overflow-hidden border-b border-zinc-200/50 dark:border-zinc-800/50">
+                      {/* Image */}
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        priority={index === 0}
+                      />
+
+                      {/* Overlay gradient biar text tetap kebaca */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
+
+                      {/* Title di atas gambar */}
+                      <div className="absolute bottom-0 left-0 right-0 z-20 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                        <h3 className="text-2xl font-bold text-white mb-2">
+                          {project.title}
+                        </h3>
+                        <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                          <span className="text-xs font-medium text-blue-300 uppercase tracking-wider">
+                            Click to view details
+                          </span>
                         </div>
+                      </div>
                     </div>
-                    
+
                     <CardContent className="flex-grow space-y-5 pt-8 px-6 pb-8">
                       <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed line-clamp-3">
                         {project.description}
                       </p>
-                      
+
                       {/* Tech Stack Tags */}
                       <div className="flex flex-wrap gap-2 pt-2">
                         {project.tags.map(tag => (
-                          <Badge 
-                            key={tag} 
-                            variant="secondary" 
+                          <Badge
+                            key={tag}
+                            variant="secondary"
                             className={`text-xs px-2.5 py-1 font-semibold border-none \${tagColors[tag] || "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300"}`}
                           >
                             {tag}
@@ -143,12 +153,14 @@ export function Projects() {
                 <DialogHeader>
                   <DialogTitle className="text-2xl font-bold">{project.title}</DialogTitle>
                 </DialogHeader>
-                <div className="relative aspect-[16/9] overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-900 mt-2">
-                  <div className={`absolute inset-0 opacity-30 dark:opacity-40 mix-blend-overlay \${
-                      index % 3 === 0 ? 'bg-gradient-to-br from-blue-500 to-purple-600' : 
-                      index % 3 === 1 ? 'bg-gradient-to-br from-emerald-500 to-teal-600' : 
-                      'bg-gradient-to-br from-orange-500 to-pink-600'
-                  }`} />
+                <div className="relative aspect-[16/9] overflow-hidden rounded-lg mt-2">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 600px"
+                  />
                 </div>
                 <div className="space-y-4 py-4">
                   <DialogDescription className="text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">
@@ -158,9 +170,9 @@ export function Projects() {
                     <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Technologies Used</h4>
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map(tag => (
-                        <Badge 
-                          key={tag} 
-                          variant="secondary" 
+                        <Badge
+                          key={tag}
+                          variant="secondary"
                           className={`text-xs px-3 py-1 font-semibold border-none \${tagColors[tag] || "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300"}`}
                         >
                           {tag}
