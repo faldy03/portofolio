@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export function Hero() {
   return (
@@ -31,15 +32,15 @@ export function Hero() {
                 Available for Work 🚀
               </span>
             </motion.div>
-            
+
             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
               Hi, I'm{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500 dark:from-blue-400 dark:to-emerald-400">
                 Muhammad Fauzan Naufaldy
               </span>
             </h1>
-            
-            <motion.p 
+
+            <motion.p
               className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -48,8 +49,8 @@ export function Hero() {
             >
               Frontend & Backend Developer passionate about building robust, scalable applications and delivering exceptional user experiences.
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               className="flex flex-col sm:flex-row items-center gap-4 pt-4 justify-center md:justify-start"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -77,10 +78,12 @@ export function Hero() {
             className="flex-1 relative max-w-md mx-auto md:max-w-none"
           >
             <div className="relative aspect-square rounded-full md:rounded-3xl overflow-hidden border-4 border-white dark:border-zinc-800 shadow-2xl">
-              <img 
-                src="/asset/hero.jpg" 
-                alt="Muhammad Fauzan Naufaldy" 
+              <Image
+                src="/asset/hero.jpg"
+                alt="Muhammad Fauzan Naufaldy"
                 className="object-cover w-full h-full bg-zinc-100 dark:bg-zinc-900"
+                width={500}
+                height={500}
               />
             </div>
             {/* Decorative element behind image */}
