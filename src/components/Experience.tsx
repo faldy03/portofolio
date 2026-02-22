@@ -114,7 +114,7 @@ export function Experience() {
                           </Badge>
                         </div>
 
-                        <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+                        <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed text-justify">
                           {exp.description}
                         </p>
 
