@@ -84,6 +84,8 @@ export function Hero() {
                 className="object-cover w-full h-full bg-zinc-100 dark:bg-zinc-900"
                 width={500}
                 height={500}
+                priority
+                sizes="(max-width: 768px) 100vw, 500px"
               />
             </div>
             {/* Decorative element behind image */}
