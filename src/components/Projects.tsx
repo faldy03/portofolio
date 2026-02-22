@@ -6,6 +6,14 @@ import Image from "next/image";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const projects = [
   {
@@ -86,66 +94,95 @@ export function Projects() {
           viewport={{ once: true, margin: "-50px" }}
         >
           {projects.map((project, index) => (
-            <motion.div key={index} variants={itemVariants} className="group h-full flex">
-              <Card className="flex flex-col w-full overflow-hidden border-zinc-200/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/60 backdrop-blur-xl transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 relative border origin-bottom">
-                
-                {/* Image Placeholder area */}
-                <div className="relative aspect-[16/9] overflow-hidden bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200/50 dark:border-zinc-800/50 p-6 flex flex-col justify-end">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 z-10" />
+            <Dialog key={index}>
+              <DialogTrigger asChild>
+                <motion.div variants={itemVariants} className="group h-full flex cursor-pointer w-full text-left">
+                  <Card className="flex flex-col w-full overflow-hidden border-zinc-200/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/60 backdrop-blur-xl transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 relative border origin-bottom">
                     
-                    {/* Abstract colorful background for placeholder */}
-                    <div className={`absolute inset-0 opacity-20 dark:opacity-30 mix-blend-overlay \${
+                    {/* Image Placeholder area */}
+                    <div className="relative aspect-[16/9] overflow-hidden bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200/50 dark:border-zinc-800/50 p-6 flex flex-col justify-end">
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 z-10" />
+                        
+                        {/* Abstract colorful background for placeholder */}
+                        <div className={`absolute inset-0 opacity-20 dark:opacity-30 mix-blend-overlay \${
+                          index % 3 === 0 ? 'bg-gradient-to-br from-blue-500 to-purple-600' : 
+                          index % 3 === 1 ? 'bg-gradient-to-br from-emerald-500 to-teal-600' : 
+                          'bg-gradient-to-br from-orange-500 to-pink-600'
+                        }`} />
+                        
+                        <div className="relative z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                             <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
+                             <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                 <span className="text-xs font-medium text-blue-300 uppercase tracking-wider">Click to view details</span>
+                             </div>
+                        </div>
+                    </div>
+                    
+                    <CardContent className="flex-grow space-y-5 pt-8 px-6 pb-8">
+                      <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed line-clamp-3">
+                        {project.description}
+                      </p>
+                      
+                      {/* Tech Stack Tags */}
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        {project.tags.map(tag => (
+                          <Badge 
+                            key={tag} 
+                            variant="secondary" 
+                            className={`text-xs px-2.5 py-1 font-semibold border-none \${tagColors[tag] || "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300"}`}
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[600px] border-zinc-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold">{project.title}</DialogTitle>
+                </DialogHeader>
+                <div className="relative aspect-[16/9] overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-900 mt-2">
+                  <div className={`absolute inset-0 opacity-30 dark:opacity-40 mix-blend-overlay \${
                       index % 3 === 0 ? 'bg-gradient-to-br from-blue-500 to-purple-600' : 
                       index % 3 === 1 ? 'bg-gradient-to-br from-emerald-500 to-teal-600' : 
                       'bg-gradient-to-br from-orange-500 to-pink-600'
-                    }`} />
-                    
-                    <div className="relative z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                         <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                         <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                             <span className="text-xs font-medium text-blue-300 uppercase tracking-wider">View Details</span>
-                         </div>
-                    </div>
+                  }`} />
                 </div>
-                
-                <CardContent className="flex-grow space-y-5 pt-8 px-6">
-                  <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+                <div className="space-y-4 py-4">
+                  <DialogDescription className="text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">
                     {project.description}
-                  </p>
-                  
-                  {/* Tech Stack Tags */}
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {project.tags.map(tag => (
-                      <Badge 
-                        key={tag} 
-                        variant="secondary" 
-                        className={`text-xs px-2.5 py-1 font-semibold border-none \${tagColors[tag] || "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300"}`}
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
+                  </DialogDescription>
+                  <div className="space-y-3">
+                    <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Technologies Used</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map(tag => (
+                        <Badge 
+                          key={tag} 
+                          variant="secondary" 
+                          className={`text-xs px-3 py-1 font-semibold border-none \${tagColors[tag] || "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300"}`}
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
-                </CardContent>
-                
-                {/* Actions Footer */}
-                <CardFooter className="pt-6 pb-6 px-6 mt-auto flex flex-wrap gap-3 relative z-20 bg-zinc-50/50 dark:bg-zinc-900/50 border-t border-zinc-100 dark:border-zinc-800/50">
-                  <span className="flex-1 min-w-[120px]">
-                    <Button variant="default" size="sm" className="w-full h-11 gap-2 rounded-xl shadow-md hover:shadow-lg hover:scale-[1.02] transition-all bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-200 dark:text-zinc-900" asChild>
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="h-4 w-4" /> Live Demo
-                      </a>
-                    </Button>
-                  </span>
-                  <span className="flex-1 min-w-[120px]">
-                    <Button variant="outline" size="sm" className="w-full h-11 gap-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:scale-[1.02] transition-all border-zinc-200 dark:border-zinc-700" asChild>
-                      <a href={project.github} target="_blank" rel="noopener noreferrer">
-                        <Github className="h-4 w-4" /> Code
-                      </a>
-                    </Button>
-                  </span>
-                </CardFooter>
-              </Card>
-            </motion.div>
+                </div>
+                <div className="flex flex-wrap gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+                  <Button variant="default" className="flex-1 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-200 dark:text-zinc-900 gap-2" asChild>
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="h-4 w-4" /> Live Demo
+                    </a>
+                  </Button>
+                  <Button variant="outline" className="flex-1 border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 gap-2" asChild>
+                    <a href={project.github} target="_blank" rel="noopener noreferrer">
+                      <Github className="h-4 w-4" /> Code
+                    </a>
+                  </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
           ))}
         </motion.div>
       </div>
