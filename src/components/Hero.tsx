@@ -79,7 +79,7 @@ export function Hero() {
           >
             <div className="relative aspect-square rounded-full md:rounded-3xl overflow-hidden border-4 border-white dark:border-zinc-800 shadow-2xl">
               <Image
-                src="/asset/hero.jpg"
+                src="/asset/hero.JPG"
                 alt="Muhammad Fauzan Naufaldy"
                 className="object-cover w-full h-full bg-zinc-100 dark:bg-zinc-900"
                 width={500}
