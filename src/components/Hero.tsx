@@ -8,7 +8,7 @@ import Image from "next/image";
 const socialLinks = [
   { href: "mailto:m.fauzan.faldy17@gmail.com", icon: Mail, label: "Email" },
   { href: "https://github.com/faldy03", icon: Github, label: "GitHub" },
-  { href: "https://linkedin.com/in/fauzannaufaldy", icon: Linkedin, label: "LinkedIn" },
+  { href: "https://www.linkedin.com/in/muhammad-fauzan-naufaldy-ba1308295/", icon: Linkedin, label: "LinkedIn" },
 ];
 
 export function Hero() {
