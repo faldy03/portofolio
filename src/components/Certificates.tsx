@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Award, ExternalLink, CalendarDays, ZoomIn, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+import { useAccent } from "@/components/ColorContext";
 
 interface Certificate {
   title: string;
@@ -94,6 +95,7 @@ const accents = [
 ];
 
 export function Certificates() {
+  const { accent } = useAccent();
   const [selected, setSelected] = useState<number | null>(null);
 
   const selectedCert = selected !== null ? certificates[selected] : null;
@@ -126,7 +128,11 @@ export function Certificates() {
               <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
                 Certificates
               </motion.h2>
-              <motion.div variants={itemVariants} className="h-px w-16 bg-zinc-300 dark:bg-zinc-700 mx-auto" />
+              <motion.div
+                variants={itemVariants}
+                className="h-px w-16 mx-auto"
+                style={{ background: `linear-gradient(to right, ${accent.hex}, ${accent.hex}44)` }}
+              />
               <motion.p variants={itemVariants} className="text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto">
                 Courses and certifications I've completed. Click any card to view the certificate.
               </motion.p>

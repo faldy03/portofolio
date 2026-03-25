@@ -14,6 +14,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useAccent } from "@/components/ColorContext";
 
 const projects = [
   {
@@ -68,6 +69,7 @@ const itemVariants = {
 };
 
 export function Projects() {
+  const { accent } = useAccent();
   return (
     <section id="projects" className="py-20 md:py-32 bg-zinc-50/50 dark:bg-zinc-900/20 relative overflow-hidden">
       {/* modern background blur */}
@@ -80,7 +82,10 @@ export function Projects() {
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Featured Projects
           </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-blue-600 to-emerald-500 mx-auto rounded-full" />
+          <div
+            className="h-1 w-24 mx-auto rounded-full"
+            style={{ background: `linear-gradient(to right, ${accent.hex}, ${accent.hex}88)` }}
+          />
           <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto pt-4">
             A selection of my recent work showcasing my abilities across the stack.
           </p>
@@ -182,7 +187,12 @@ export function Projects() {
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
-                  <Button variant="default" className="flex-1 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-200 dark:text-zinc-900 gap-2" asChild>
+                  <Button
+                    variant="default"
+                    className="flex-1 text-white gap-2"
+                    style={{ backgroundColor: accent.hex }}
+                    asChild
+                  >
                     <a href={project.demo} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="h-4 w-4" /> Live Demo
                     </a>

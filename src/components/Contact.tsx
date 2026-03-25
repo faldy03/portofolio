@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useAccent } from "@/components/ColorContext";
 
 export function Contact() {
+  const { accent } = useAccent();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -31,7 +33,10 @@ export function Contact() {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
               Get In Touch
             </h2>
-            <div className="h-1 w-20 bg-zinc-900 dark:bg-zinc-100 mx-auto rounded-full" />
+            <div
+              className="h-1 w-20 mx-auto rounded-full"
+              style={{ background: `linear-gradient(to right, ${accent.hex}, ${accent.hex}88)` }}
+            />
             <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto pt-4">
               I'm currently looking for new opportunities. Whether you have a question or just want to say hi, my inbox is always open!
             </p>
@@ -56,7 +61,12 @@ export function Contact() {
                   
                   <div className="space-y-6">
                     <a href="mailto:m.fauzan.faldy17@gmail.com" className="flex items-center gap-4 group">
-                      <div className="h-12 w-12 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors shadow-sm">
+                      <div
+                        className="h-12 w-12 rounded-full flex items-center justify-center shadow-sm transition-colors"
+                        style={{ backgroundColor: `${accent.hex}18`, color: accent.hex }}
+                        onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.backgroundColor = accent.hex; (e.currentTarget as HTMLDivElement).style.color = 'white'; }}
+                        onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.backgroundColor = `${accent.hex}18`; (e.currentTarget as HTMLDivElement).style.color = accent.hex; }}
+                      >
                         <Mail className="h-5 w-5" />
                       </div>
                       <div>
@@ -138,7 +148,12 @@ export function Contact() {
                       ></textarea>
                     </motion.div>
                     <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}>
-                      <Button type="submit" size="lg" className="w-full sm:w-auto h-12 px-8 rounded-full shadow-md gap-2">
+                      <Button
+                        type="submit"
+                        size="lg"
+                        className="w-full sm:w-auto h-12 px-8 rounded-full shadow-md gap-2 text-white"
+                        style={{ backgroundColor: accent.hex }}
+                      >
                         Send Message <Send className="h-4 w-4" />
                       </Button>
                     </motion.div>

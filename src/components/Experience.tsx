@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Briefcase, Calendar, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useAccent } from "@/components/ColorContext";
 
 const experiences = [
   {
@@ -51,6 +52,7 @@ const itemVariants: any = {
 };
 
 export function Experience() {
+  const { accent } = useAccent();
   return (
     <section id="experience" className="py-20 md:py-32 bg-zinc-50 dark:bg-zinc-900/50 relative overflow-hidden">
       {/* Background decoration */}
@@ -70,7 +72,11 @@ export function Experience() {
             <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
               Work Experience
             </motion.h2>
-            <motion.div variants={itemVariants} className="h-1 w-20 bg-zinc-900 dark:bg-zinc-100 mx-auto rounded-full" />
+            <motion.div
+              variants={itemVariants}
+              className="h-1 w-20 mx-auto rounded-full"
+              style={{ background: `linear-gradient(to right, ${accent.hex}, ${accent.hex}88)` }}
+            />
             <motion.p variants={itemVariants} className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto pt-4">
               My professional journey and academic projects in software development.
             </motion.p>
@@ -87,7 +93,12 @@ export function Experience() {
                   className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
                 >
                   {/* Timeline dot */}
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white dark:border-zinc-950 bg-zinc-100 dark:bg-zinc-900/50 text-zinc-500 dark:text-zinc-400 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-sm relative z-10 transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white dark:group-hover:bg-blue-500 dark:group-hover:text-white group-hover:border-blue-100 dark:group-hover:border-blue-900">
+                  <div
+                    className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white dark:border-zinc-950 bg-zinc-100 dark:bg-zinc-900/50 text-zinc-500 dark:text-zinc-400 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-sm relative z-10 transition-all duration-300 group-hover:scale-110 group-hover:text-white group-hover:border-transparent"
+                    style={{}}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.background = accent.hex; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.background = ''; }}
+                  >
                     <Briefcase className="w-4 h-4" />
                   </div>
 
@@ -95,12 +106,18 @@ export function Experience() {
                   <Card className="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] border-none shadow-md hover:shadow-xl transition-all duration-300 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm group-hover:-translate-y-1 hover:bg-white dark:hover:bg-zinc-900">
                     <CardContent className="p-6 relative overflow-hidden">
                       {/* Accent Line */}
-                      <div className={`absolute top-0 \${isEven ? 'left-0' : 'left-0 md:left-auto md:right-0'} w-1 h-full \${exp.accent} transition-all duration-300 group-hover:w-2`} />
+                      <div
+                        className={`absolute top-0 ${isEven ? 'left-0' : 'left-0 md:left-auto md:right-0'} w-1 h-full rounded-sm transition-all duration-300 group-hover:w-[3px]`}
+                        style={{ background: accent.hex }}
+                      />
 
                       <div className="space-y-4">
                         <div className="flex flex-col xl:flex-row xl:items-start justify-between gap-2">
                           <div>
-                            <h3 className="font-bold text-xl text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            <h3
+                              className="font-bold text-xl text-zinc-900 dark:text-zinc-50 transition-colors"
+                              style={{}}
+                            >
                               {exp.role}
                             </h3>
                             <p className="text-zinc-600 dark:text-zinc-400 font-medium flex items-center gap-1 mt-1">

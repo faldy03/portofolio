@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Code2, Database, Layout } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { useAccent } from "@/components/ColorContext";
 
 const skills = [
   { 
@@ -72,6 +72,7 @@ const itemVariants = {
 };
 
 export function About() {
+  const { accent } = useAccent();
   return (
     <section id="about" className="py-20 md:py-32 bg-zinc-50 dark:bg-zinc-900/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,7 +88,11 @@ export function About() {
             <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
               About Me
             </motion.h2>
-            <motion.div variants={itemVariants} className="h-1 w-20 bg-zinc-900 dark:bg-zinc-100 mx-auto rounded-full" />
+            <motion.div
+              variants={itemVariants}
+              className="h-1 w-20 mx-auto rounded-full"
+              style={{ background: `linear-gradient(to right, ${accent.hex}, ${accent.hex}88)` }}
+            />
             <motion.p variants={itemVariants} className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto pt-4">
               I'm a dedicated developer with a strong foundation in both frontend and backend technologies. I recently graduated and I'm eager to contribute to innovative projects.
             </motion.p>
@@ -97,10 +102,10 @@ export function About() {
             {/* Education Info */}
             <motion.div variants={itemVariants} className="space-y-6">
               <h3 className="text-2xl font-semibold flex items-center gap-2 text-zinc-900 dark:text-zinc-50">
-                <GraduationCap className="h-6 w-6 text-blue-600 dark:text-blue-400" /> Education
+                <GraduationCap className="h-6 w-6" style={{ color: accent.hex }} /> Education
               </h3>
-              <Card className="border-none shadow-md bg-white dark:bg-zinc-950 overflow-hidden">
-                <div className="absolute top-0 left-0 w-1 h-full bg-blue-600 dark:bg-blue-500" />
+              <Card className="border-none shadow-md bg-white dark:bg-zinc-950 overflow-hidden relative">
+                <div className="absolute top-0 left-0 w-1 h-full rounded-l" style={{ background: accent.hex }} />
                 <CardContent className="p-6">
                   <div className="space-y-2">
                     <h4 className="font-bold text-xl text-zinc-900 dark:text-zinc-100">Telkom University</h4>
@@ -117,7 +122,7 @@ export function About() {
             {/* Skills & Tech Stack */}
             <motion.div variants={itemVariants} className="space-y-6">
               <h3 className="text-2xl font-semibold flex items-center gap-2 text-zinc-900 dark:text-zinc-50">
-                <Code2 className="h-6 w-6 text-emerald-600 dark:text-emerald-400" /> Tech Stack
+                <Code2 className="h-6 w-6" style={{ color: accent.hex }} /> Tech Stack
               </h3>
               <Card className="border-none shadow-md bg-white dark:bg-zinc-950">
                 <CardContent className="p-6 space-y-6">
@@ -150,13 +155,13 @@ export function About() {
                   
                   <div className="grid grid-cols-2 gap-4 pt-4 border-t border-zinc-100 dark:border-zinc-800">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400">
+                      <div className="p-2 rounded-lg" style={{ backgroundColor: `${accent.hex}18`, color: accent.hex }}>
                         <Layout className="h-5 w-5" />
                       </div>
                       <span className="font-medium text-sm text-zinc-700 dark:text-zinc-300">Frontend</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400">
+                      <div className="p-2 rounded-lg" style={{ backgroundColor: `${accent.hex}18`, color: accent.hex }}>
                         <Database className="h-5 w-5" />
                       </div>
                       <span className="font-medium text-sm text-zinc-700 dark:text-zinc-300">Backend</span>
