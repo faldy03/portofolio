@@ -11,7 +11,7 @@ const experiences = [
     id: 1,
     role: "Full Stack Web Developer",
     company: "CodeTag Studio",
-    date: " Jul 2025",
+    date: " Jul 2025 - Now",
     description: "Together with my teammate, I built CodeTag, a platform that helps people create websites for various purposes such as business needs, company profiles, and more.",
     skills: ["Next.js", "React", "Tailwind CSS", "Node.js"],
     accent: "bg-blue-500"
