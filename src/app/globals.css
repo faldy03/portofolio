@@ -124,3 +124,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ── Hero section animations ─────────────────────────────────── */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-12px); }
+}
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(var(--orbit-r, 140px)) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(var(--orbit-r, 140px)) rotate(-360deg); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-spin-slow   { animation: spin-slow 20s linear infinite; }
+.animate-float       { animation: float-gentle 4s ease-in-out infinite; }
+.animate-orbit       { animation: orbit var(--orbit-dur, 12s) linear infinite; }
+.animate-shimmer     { animation: shimmer 3s ease-in-out infinite; }
