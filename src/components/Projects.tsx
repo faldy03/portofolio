@@ -309,7 +309,7 @@ export function Projects() {
                   key={i}
                   onClick={() => goTo(i)}
                   className={`relative h-14 flex-1 rounded-lg overflow-hidden transition-all duration-300 ${i === active ? "ring-2 opacity-100" : "opacity-40 hover:opacity-70"}`}
-                  style={i === active ? { ringColor: accent.hex, outlineColor: accent.hex, outline: `2px solid ${accent.hex}` } : {}}
+                  style={i === active ? { outlineColor: accent.hex, outline: `2px solid ${accent.hex}` } : {}}
                   aria-label={p.title}
                 >
                   {p.hasImage ? (
