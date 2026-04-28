@@ -100,7 +100,7 @@ export function Projects() {
 
   const slideVariants = {
     enter: (dir: number) => ({ x: dir > 0 ? 60 : -60, opacity: 0 }),
-    center: { x: 0, opacity: 1, transition: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] } },
+    center: { x: 0, opacity: 1, transition: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] } },
     exit: (dir: number) => ({ x: dir > 0 ? -60 : 60, opacity: 0, transition: { duration: 0.3 } }),
   };
 
